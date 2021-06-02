@@ -1,47 +1,24 @@
 import React from 'react';
 import {
-  BrowserRouter as Router, Route, NavLink, Switch,
+  BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
-import Counter from './counter';
+import Home from './Home';
+import SnowChildQuiz from './SnowChildQuiz';
+import LittleRedQuiz from './LittleRedQuiz';
+import ChooseYourOwn from './ChooseYourOwn';
 
-const Nav = (props) => {
-  return (
-    <nav>
-      <ul>
-        <li><NavLink to="/" exact>Home</NavLink></li>
-        <li><NavLink to="/about">About</NavLink></li>
-        <li><NavLink to="/test/id1">test id1 </NavLink></li>
-        <li><NavLink to="/test/id2">test id2 </NavLink></li>
-      </ul>
-    </nav>
-  );
-};
-const About = (props) => {
-  return <div> All there is to know about me </div>;
-};
-const Welcome = (props) => {
-  return (
-    <div>
-      <Counter />
-      <div> Welcome </div>
-    </div>
-  );
-};
-const Test = (props) => {
-  return <div> ID: {props.match.params.id} </div>;
-};
 const FallBack = (props) => {
   return <div>URL Not Found </div>;
 };
 const App = () => {
   return (
     <Router>
-      <div>
-        <Nav />
+      <div className="main">
         <Switch>
-          <Route exact path="/" component={Welcome} />
-          <Route path="/about" component={About} />
-          <Route path="/test/:id" component={Test} />
+          <Route exact path="/" component={Home} />
+          <Route path="/snowchild" component={SnowChildQuiz} />
+          <Route path="/littlered" component={LittleRedQuiz} />
+          <Route path="/adventure" component={ChooseYourOwn} />
           <Route component={FallBack} />
         </Switch>
       </div>
